@@ -1,5 +1,5 @@
-# [LG Gram 17Z90N Hackintosh](https://www.lg.com/us/laptops/lg-17z90n-r.aac8u1-ultra-slim-laptop)
-### Opencore Version: 0.8.5
+# [LG Gram 14 (2 in 1) 14T90N Big Sur]
+### Opencore Version: 0.8.2
 | Specification       | Details                                 |
 | ------------------- | --------------------------------------- |
 | Model               | LG gram 14 (2 in 1) - 2020 (14T90N)              |
