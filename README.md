@@ -1,4 +1,4 @@
-# [LG Gram 14 (2 in 1) 14T90N Big Sur]
+# LG Gram 14 (2 in 1) 14T90N Big Sur
 ### Opencore Version: 0.8.2
 | Specification       | Details                                 |
 | ------------------- | --------------------------------------- |
