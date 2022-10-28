@@ -2,66 +2,57 @@
 ### Opencore Version: 0.8.5
 | Specification       | Details                                 |
 | ------------------- | --------------------------------------- |
-| Model               | LG gram 17 - 2020 (17Z90N)              |
-| Processor           | Intel Core i7-1065G7                    |
-| Integrated Graphics | Intel® Iris® Plus                       |
+| Model               | LG gram 14 (2 in 1) - 2020 (14T90N)              |
+| Processor           | Intel Core i7-10510U Comet Lake                    |
+| Integrated Graphics | Intel UHD 620                       |
 | Memory              | 16GB RAM & 512GB SSD                    |
 | Sound Card          | Conexant CX8200                         |
 | Wireless Card       | Intel® Wi-Fi 6 AX201                    |
 
 # Work In Progress
-- I have had this laptop since November, spent so many hours on this (so far I havent found anyone who has had success) and Finally got it to work YAY!
-- I am excited to get this fully finished but still have more to do! Will update when I fix whats not working!
-
-![Screenshot](/Images/AboutThisMac-Monterey.png)
+- Thanks to AskDavis (and others in credits) for providing the original EFI for my LG Gram 17 - it is the perfect 17" laptop!
+- That prompted me to get this 14" convertible option and give it a go.
 
 ## Instructions
 ### 1. BIOS Settings
 - Hold F2 to enter BIOS on boot up
-- Press CTRL-ALT-F7 to open Advanced Options
-- Main - Boot Features - Quick Boot => Disabled
-- Advanced - Intel Advanced Menu - CPU Configuration - Software Guard Extentsions (SGX) => Disabled
-- Advanced - Intel Advanced Menu - Power & Performance - "CPU - Power Management Control" - CPU Lock Configuration - CFG Lock => Disabled and Overclocking Lock => Disabled 
-- Advanced - Intel Advanced Menu - System Agent (SA) Configuration - Graphics Configuration - DVMT Pre-Allocated => 64M
-- Advanced - Intel Advanced Menu - PCH-IO Configuration - USB Configuration - XHCI Compliance Mode => Enabled
-- Advanced - Intel Advanced Menu - PCH-IO Configuration - Security Configuration - Force unlock on all GPIO pads => Enabled (Thanks 1OldSWguy)
-- Advanced - Intel Advanced Menu - Platform Settings - System Time and Alarm Source => Legacy RTC
-- Advanced - Intel Advanced Menu - ACPI Settings - Low Power S0 Idle Capability => Disabled
-- Security - Secure Boot Configuration - Secure Boot Option - Disabled
+- Security - Secure Boot - Disabled
+- Security - TPM Support - OFF
 - Exit - Exit Saving Changes
 
 ### 2. Generate SMBIOS
 - https://github.com/corpnewt/GenSMBIOS
-- MacbookPro16,2
-- Follow Guide to Add to config.plist - https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/icelake.html#platforminfo
+- MacbookPro16,3
+- Follow Guide to Add to config.plist - https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake-plus.html#starting-point
 
 ### 3. Boot Installer
 - Boot Opencore, select installer, and Install Big Sur. (Youll have to Create a MacOS Big Sur installer)
 
 ## Notes
-- The NVME Drive that comes with this Laptop is a SKHynix 512GB which is not supported by Mac OS, Please replace it as it will not boot with it installed. (I bought a WD SN750 500GB that worked great).
-- If the system Crashes, Kernal Panics, or you manually shut it down you will have to re-enter BIOS settings above. (Havent figured out how to save them even if it kernal panics)
-- Fixed - Graphics glitches when booting then is completely fine after the first 10-20 or so seconds. (Fixed Thanks to 1OldSWguy)
+- The NVME Drive that comes with this Laptop is a SKHynix 512GB which is not supported by Mac OS, Please replace it as it will not boot with it installed. (It might also come with Samsung SSD which can panic, so change that too).
 
 ### Working
 - WIFI
 - Bluetooth
-- Sound
+- Sound / Microphone
 - Graphics Acceleration
 - Keyboard
-- Trackpad
 - Battery Settings
 - Webcam
 - USB-C
-- Brightness Keys
-- USB
+- USB - all ports mapped
+- Sleep / Wake
+- TOUCHSCREEN works! Including multi-gestures
+- Gyroscope works! This is the first I've seen work on a Hackintosh, screen rotates in all four orientations.
 
 ### Partial Working
-- USB-C (Sleep Crashes with dock)
-  - might be fixed with latest, dont have a dock to test
-- Sleep 
+- Function keys - Brightness can be mapped via Keyboard Shortcut preferences. Volume keys don't seem to work properly
+
 
 ### Not Working
+
+- TRACKPAD - Despite attempting GPIO pinning (and touchscreen working), I can't seem to get it to work. Windows Device Manager show it's a Synaptic trackpad (SYNA1D34). BIOS device names for the two I2C HID devices (one is the touchscreen, other is trackpad I suspect) - SB.PCI0.I2C2.SHUB and SB.PCI0.I2C1.TPD0
+
 - Thunderbolt
 - HDMI
 - FingerPrint Reader
